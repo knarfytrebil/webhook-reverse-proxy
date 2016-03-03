@@ -1,0 +1,17 @@
+{
+  "name": "webhook-reverse-proxy",
+  "version": "0.0.1",
+  "description": "reverse proxy for webhook",
+  "main": "js/server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yao Yuan",
+  "license": "MIT",
+  "devDependencies": {
+    "simplewebhook":"*",
+    "ws":"*",
+  }
+}
+
