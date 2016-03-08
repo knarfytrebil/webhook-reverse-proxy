@@ -15,24 +15,24 @@
   });
 
   wss.on('connection', function(ws) {
+    server.addHook({
+      link: '/theHooker',
+      event: '*',
+      exec: 'ls -la',
+      options: {
+        encoding: 'utf8'
+      },
+      handler: function(error, stdout, stderr) {
+        ws.send(this.request.body);
+        console.log('Request body :', this.request.body);
+        console.log('List command: ', stdout);
+        this.response.send('Hello');
+      }
+    });
     ws.on('message', incoming(message)(function() {
       return console.log('received: %s', message);
     }));
-    return ws.send('something');
-  });
-
-  server.addHook({
-    link: '/srs_front',
-    event: '*',
-    exec: 'ls -la',
-    options: {
-      encoding: 'utf8'
-    },
-    handler: function(error, stdout, stderr) {
-      console.log('Request body :', this.request.body);
-      console.log('List command: ', stdout);
-      this.response.send('Hello');
-    }
+    return ws.send('Welcome to Webhook Proxy ...');
   });
 
   server.listen(3333);
