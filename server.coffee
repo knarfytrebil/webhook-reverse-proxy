@@ -13,7 +13,7 @@ wss.on 'connection', (ws) ->
   ws.send('something')
 
 server.addHook
-  link: '/'
+  link: '/srs_front'
   event: '*'
   exec: 'ls -la'
   options: encoding: 'utf8'

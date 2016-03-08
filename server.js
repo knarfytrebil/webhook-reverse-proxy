@@ -22,7 +22,7 @@
   });
 
   server.addHook({
-    link: '/',
+    link: '/srs_front',
     event: '*',
     exec: 'ls -la',
     options: {
