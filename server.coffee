@@ -1,8 +1,11 @@
 WebhookServer = require('simplewebhook')
 WebSocketServer = require('ws').Server
 
-wss = new WebSocketServer({ port: 7070 })
-server = WebhookServer(serverType: 'gitlab')
+wss = new WebSocketServer
+  port: 7070
+
+server = WebhookServer
+  serverType: 'gitlab'
 
 wss.on 'connection', (ws) ->
   ws.on 'message', incoming(message) ->
@@ -19,4 +22,6 @@ server.addHook
     console.log 'List command: ', stdout
     @response.send 'Hello'
     return
+
+# Webhook Server Listens to Port 3333
 server.listen 3333
