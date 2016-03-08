@@ -13,7 +13,7 @@ wss.on 'connection', (ws) ->
     # Feel free to change the name here
     link: '/theHooker'
     event: '*'
-    exec: 'ls -la'
+    exec: 'time'
     options: encoding: 'utf8'
     handler: (error, stdout, stderr) ->
       ws.send @request.body

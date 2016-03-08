@@ -18,7 +18,7 @@
     server.addHook({
       link: '/theHooker',
       event: '*',
-      exec: 'ls -la',
+      exec: 'time',
       options: {
         encoding: 'utf8'
       },
