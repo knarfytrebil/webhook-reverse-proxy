@@ -10,6 +10,7 @@ server = WebhookServer
 wss.on 'connection', (ws) ->
   # Server Hook for Specific Project
   server.addHook
+    # Feel free to change the name here
     link: '/theHooker'
     event: '*'
     exec: 'ls -la'
