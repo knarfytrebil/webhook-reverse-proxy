@@ -23,7 +23,7 @@
         encoding: 'utf8'
       },
       handler: function(error, stdout, stderr) {
-        ws.send(this.request.body);
+        ws.send('wtf');
         console.log('Request body :', this.request.body);
         console.log('List command: ', stdout);
         this.response.send('Hello');

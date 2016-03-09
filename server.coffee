@@ -16,7 +16,8 @@ wss.on 'connection', (ws) ->
     exec: 'time'
     options: encoding: 'utf8'
     handler: (error, stdout, stderr) ->
-      ws.send @request.body
+      # ws.send @request.body
+      ws.send 'wtf'
       console.log 'Request body :', @request.body
       console.log 'List command: ', stdout
       @response.send 'Hello'
