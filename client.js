@@ -15,7 +15,7 @@
         repo = msg.repository.name;
         console.log("Push event caught from " + repo);
         console.log(msg.commits.length + " Commit(s)");
-        return msg.commits.foreEach(function(c) {
+        return msg.commits.forEach(function(c) {
           if (c.message.indexOf('@deploy') > -1) {
             return console.log("Need to Deploy " + repo);
           }

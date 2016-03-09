@@ -9,7 +9,7 @@ ws.on 'open', ->
             repo = msg.repository.name
             console.log "Push event caught from #{repo}"
             console.log "#{msg.commits.length} Commit(s)"
-            msg.commits.foreEach (c) ->
+            msg.commits.forEach (c) ->
                 if c.message.indexOf('@deploy') > -1
                     console.log "Need to Deploy #{repo}"
         else
