@@ -22,7 +22,7 @@ wss.on 'connection', (ws) ->
       @response.send 'Hello'
       return
 
-  ws.on 'message', incoming(message) ->
+  ws.on 'message', (message) ->
     console.log('received: %s', message)
 
   ws.send('Welcome to Webhook Proxy ...')

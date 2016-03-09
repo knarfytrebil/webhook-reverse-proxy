@@ -29,9 +29,9 @@
         this.response.send('Hello');
       }
     });
-    ws.on('message', incoming(message)(function() {
+    ws.on('message', function(message) {
       return console.log('received: %s', message);
-    }));
+    });
     return ws.send('Welcome to Webhook Proxy ...');
   });
 
