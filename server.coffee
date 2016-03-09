@@ -7,6 +7,10 @@ wss = new WebSocketServer
 server = WebhookServer
   serverType: 'gitlab'
 
+wss.broadcast = (data) ->
+  wss.clients.forEach (client) ->
+    client.send(data)
+
 wss.on 'connection', (ws) ->
   # Server Hook for Specific Project
   server.addHook
@@ -16,7 +20,7 @@ wss.on 'connection', (ws) ->
     exec: 'time'
     options: encoding: 'utf8'
     handler: (error, stdout, stderr) ->
-      ws.send JSON.stringify(@request.body)
+      wss.broadcast JSON.stringify(@request.body)
       console.log 'Request body :', @request.body
       console.log 'List command: ', stdout
       @response.send 'Hello'
