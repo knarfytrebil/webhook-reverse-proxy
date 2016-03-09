@@ -32,7 +32,9 @@
     ws.on('message', function(message) {
       return console.log('received: %s', message);
     });
-    return ws.send('Welcome to Webhook Proxy ...');
+    return ws.send(JSON.stringify({
+      msg: 'Welcome to Webhook Proxy ...'
+    }));
   });
 
   server.listen(3333);
