@@ -18,7 +18,7 @@ wss.on 'connection', (ws) ->
     handler: (error, stdout, stderr) ->
       # ws.send @request.body
       ws.send 'wtf'
-      console.log 'Request body :', @request.body
+      console.log 'Request body :', JSON.stringify(@request.body)
       console.log 'List command: ', stdout
       @response.send 'Hello'
       return

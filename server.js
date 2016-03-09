@@ -24,7 +24,7 @@
       },
       handler: function(error, stdout, stderr) {
         ws.send('wtf');
-        console.log('Request body :', this.request.body);
+        console.log('Request body :', JSON.stringify(this.request.body));
         console.log('List command: ', stdout);
         this.response.send('Hello');
       }
