@@ -21,26 +21,27 @@
   };
 
   wss.on('connection', function(ws) {
-    server.addHook({
-      link: '/theHooker',
-      event: '*',
-      exec: 'time',
-      options: {
-        encoding: 'utf8'
-      },
-      handler: function(error, stdout, stderr) {
-        wss.broadcast(JSON.stringify(this.request.body));
-        console.log('Request body :', this.request.body);
-        console.log('List command: ', stdout);
-        this.response.send('Hello');
-      }
-    });
     ws.on('message', function(message) {
       return console.log('received: %s', message);
     });
     return ws.send(JSON.stringify({
       msg: 'Welcome to Webhook Proxy ...'
     }));
+  });
+
+  server.addHook({
+    link: '/theHooker',
+    event: '*',
+    exec: 'time',
+    options: {
+      encoding: 'utf8'
+    },
+    handler: function(error, stdout, stderr) {
+      wss.broadcast(JSON.stringify(this.request.body));
+      console.log('Request body :', this.request.body);
+      console.log('List command: ', stdout);
+      this.response.send('Hello');
+    }
   });
 
   server.listen(3333);
